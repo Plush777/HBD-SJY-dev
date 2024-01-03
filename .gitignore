@@ -29,3 +29,4 @@ coverage
 
 #api key
 ./build/js/modules/config/config.js
+./pre-build/js/modules/config/config.js
