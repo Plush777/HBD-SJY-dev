@@ -27,6 +27,5 @@ coverage
 *.sln
 *.sw?
 
-#api key
-./build/js/modules/config/config.js
-./pre-build/js/modules/config/config.js
+/build/js/modules/config/config.js
+/pre-build/js/modules/config/config.js
