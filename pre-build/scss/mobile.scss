@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+@import '_mixins','_function';
+
+@media screen and (max-height: 768px) {
+    .lyricsRow{padding-top: 40px;}
+    #disqus_thread{max-height: 539px;}
+}
+
+@media screen and (max-width: 768px) {
+    img{pointer-events: none;}
+
+    #wrap{padding: 20px 20px 0 20px;}
+}
+
+@media screen and (max-width: 550px) {
+    .m550{display: block;}
+    .titleWrap{min-height: 95px; height: 107px;}
+    .titleBox{height: auto; align-items: flex-start; margin-left: -52px;}
+    .titleText{font-size: rem(34px); line-height: 35px;}
+    .description{font-size: rem(22px); margin-top: 12px;}
+    #lottie-pop{width: 52px; height: 52px; margin-top: -7px;}
+    .counterWrap{margin-top: 30px; height: 100px;
+        #dDay{font-size: rem(28px);}
+        #time{font-size: rem(20px);}
+    }
+    .btn{min-width: 120px; margin-top: 30px; font-size: rem(18px);}
+    #btnFix{
+        span{letter-spacing: 0;}
+    }
+
+    #introPage{
+        .titleWrap{
+            +#envelope{margin-top: 0;}
+        }
+        .titleBox{align-items: center;}
+        .titleText{line-height: normal;}
+        .description{margin-top: 0;}
+        .btn{margin-top: 40px;}
+        #envelope{
+            &.open{margin-top: 80px;}
+        }
+    }
+
+    .bulb{width: 35px; height: 35px; background-size: 35px;}
+    #btnPlay,#btnNext{bottom: 80px;}
+
+    .shareWrap .text{font-size: rem(20px);}
+    .commentWrap{margin-top: 50px;
+        p{margin-bottom: 10px; font-size: rem(20px);}
+    }
+    .shareItem{width: 40px; height: 40px;
+        &.twit button::before{width: 20px; height: 20px;}
+        button{background-size: 20px;}
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .lyricsRow{
+        p{font-size: rem(20px);
+            +p{margin-top: 10px;}
+        }
+    }
+
+    .btn{min-width: 100px; height: 40px; border-radius: 8px;}
+    .bulb{width: 30px; height: 30px; background-size: 30px;}
+
+    #btnNext{bottom: 100px;}
+
+    .commentWrap p{font-size: rem(18px);}
+}

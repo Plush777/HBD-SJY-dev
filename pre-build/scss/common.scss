@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+@import '_mixins','_function';
+
+@font-face {
+    font-family: 'Middleschool_student';
+    src: url('../css/Middleschool_student.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+html{-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+body{user-select: none; touch-action: pan-y; background-color: #EDD3ED;}
+#root{position: relative; width: inherit; height: inherit;}
+#wrap{width: inherit; height: inherit; max-width: 768px; margin: 0 auto; padding-top: 40px;}
+[id*="Page"]{position: relative; height: inherit; @include fdir(column); align-items: center;}
+
+.title{
+    &Box{@include fai(center); height: 60px;}
+    &Text{font-size: rem(42px); color: #000; text-align: center; word-break: keep-all;}
+    &Wrap{height: 95px;
+        +#envelope{margin-top: 50px;}
+    }
+}
+
+.description{font-size: rem(30px); color: #333; text-align: center; word-break: keep-all;}
+
+#lottie-pop{width: 70px; height: 70px;}
+#lottie-eyes{width: 50px; height: 50px; margin-right: 10px;}
+#lottie-music{width: 300px; height: 300px;}
+
+.counterWrap{@include fdir(column); justify-content: center; align-items: center; row-gap: 5px; margin-top: 40px; height: 122px;
+border-radius: 8px; padding: 30px 0; width: 100%; box-shadow: 0 2px 5px rgba($color: #000, $alpha: 0.2); background-color: #fff;;
+    p{color: #111; min-width: 100px; text-align: center;}
+    #dDay{font-size: rem(32px);}
+    #time{font-size: rem(24px); color: #555; margin-top: -7px;}
+}
+
+.shareWrap{
+    .text{font-size: rem(24px); color: #000; text-align: center;}
+}
+
+.shareList{@include flexRow(center,center); column-gap: 10px; margin-top: 12px;}
+
+.shareItem{width: 50px; height: 50px;
+    &.ka button{background-image: url('../images/ico/ico-kakao.png');}
+    &.twit {
+        button::before{content: ''; border-radius: inherit; background-repeat: inherit; background-position: inherit; 
+        background-size: inherit; width: 30px; height: 30px; background-image: url('../images/ico/ico-x.png');}
+    }
+    &.fb button{background-image: url('../images/ico/ico-facebook.png');}
+    &.myUrl button{background-image: url('../images/ico/ico-link.png');}
+    button{@include flexRow(center,center); width: 100%; height: 100%; border-radius: 50%; 
+    background-repeat: no-repeat; background-position: center; background-size: 30px; 
+    box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.3); background-color: #fff;}
+}
+
+.btn{min-width: 130px; height: 50px; @include flexRow(center,center); font-size: rem(20px);
+color: #fff; font-weight: 700; border-radius: 16px; background-color: #7A297B; margin-top: 50px; padding: 0 12px;
+    &.disabled{opacity: .5; cursor: default;}
+}
+
+#disqus_wrapper{padding: 30px 20px 20px 20px; border-radius: 30px 30px 0 0; background-color: #fff;}
+
+#disqus_thread{height: 579px; max-height: 579px; overflow-y: auto;
+    &::-webkit-scrollbar{display: none;}
+}
+
+.commentWrap{margin-top: 100px; width: 100%;
+    p{font-size: rem(24px); margin-bottom: 20px; text-align: center; word-break: keep-all;}
+}
+
+.lyricsRow{@include fdir(column); align-items: center; width: 100%; padding-top: 40px;
+    p{position: relative; z-index: -1; opacity: 0; transition: 1s ease-in-out; width: 100%; font-size: rem(22px); font-weight: 600; text-shadow: 1px 1px 1px #fff; color: #333; 
+    text-align: center; word-break: keep-all; line-height: 24px;
+        &.active{opacity: 1; z-index: 0;}
+        +p{margin-top: 15px;}
+    }
+}
+
+#song{display: none;}
+
+#btnPlay,#btnNext{opacity: 0; z-index: -1; transition: 1s ease-in-out; position: absolute; bottom: 12px; 
+left: 50%; transform: translateX(-50%); margin-top: 0;}
+
+#btnGift,#btnLyrics,#btnPlay{letter-spacing: 0.05rem;}
+
+.fix{position: fixed; bottom: 12px; right: 12px; z-index: 9999;}
+
+#btnFix{@include fai(center); column-gap: 5px; width: 100%; height: 40px; border-radius: 20px; font-size: rem(20px); color: #000;
+box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.4); padding: 0 12px; background-color: #fff; 
+    span{margin-top: -2px; letter-spacing: .05rem;}
+    svg{@include flexRow(center,center); width: 24px; height: 24px;}
+}
+
+#musicLoader{opacity: 0; z-index: -1; transition: 1s ease-in-out; position: absolute; top: calc(50% - 40px); left: 50%; transform: translate(-50%,-50%); text-align: center;
+    p{font-size: rem(32px); color: #111; margin-top: -40px;}
+
+    &.active{opacity: 1; z-index: 0;}
+}
+
+#caution{width: 100%; max-width: 300px; opacity: 0; visibility: hidden; transition: .3s ease-in-out; position: absolute; top: 50%; left: 50%; 
+transform: translate(-50%,-50%); z-index: -1; 
+    .inner{border-radius: 8px; padding: 14px; background-color: #fff; text-align: center;}
+    .wait{display: block; font-size: rem(26px); color: #000; margin-bottom: 10px;}
+    .desc{font-size: rem(20px); color: #333; line-height: 22px;}
+    
+    &.active{opacity: 1; visibility: visible; z-index: 10020;}
+    &::before{content: ''; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); 
+    width: 100vw; height: 100vh; background-color: rgba($color: #000, $alpha: 0.3); z-index: -1;}
+}
+
+#btnCaution{min-width: 100px; height: 40px; font-size: rem(18px); border-radius: 6px; margin: 20px auto 0 auto;}
+
+.m550{display: none;}
+
+@media (hover:hover){ 
+
+}
